@@ -1,3 +1,3 @@
-# What We Did
+# Jostle Parent
 
 This is the code and process repository for the game *Jostle Parent*. See the [information page](info/) for more detail.

@@ -10,7 +10,7 @@ At some point I may port the game to JavaScript or similar, and it's possible th
 
 ## Links
 
-* [The original .swf file](https://github.com/pippinbarr/jostle-parent/releases/download/v1.0/JostleParent.swf)
+* [The original .swf file](https://github.com/pippinbarr/jostle-parent/releases/tag/swf)
 * [Code repository](https://github.com/pippinbarr/jostle-parent)
 
 ## Description

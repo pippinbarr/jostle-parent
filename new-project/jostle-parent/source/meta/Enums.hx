@@ -1,0 +1,69 @@
+package;
+
+enum Kind
+{
+	PARENT;
+	CHILD;
+	FURNITURE;
+	WALL;
+	LOCK;
+	UNKNOWN;
+	FOOD;
+	TOY;
+	ELECTRICITY;
+	CAR;
+	BALL;
+	POISON;
+	BED;
+}
+
+enum Location
+{
+	BEDROOM;
+	HALLWAY;
+	KIDS_ROOM;
+	BATHROOM;
+	LIVING_ROOM;
+	GARDEN;
+	FRONT_OF_HOUSE;
+	PLAYGROUND;
+	PARK;
+	BEACH;
+	GRAVEYARD;
+	CELL;
+	MENU;
+	UNKNOWN;
+}
+
+enum Mood
+{
+	NORMAL;
+	APOLOGETIC;
+	STUNNED;
+	ANNOYED;
+	ANGRY;
+	SCARED;
+	KNOCKED_DOWN;
+}
+
+enum Mode
+{
+	SEATED;
+	STILL;
+	FOLLOW;
+	WANDER;
+	JITTER;
+	DANCE;
+	PATH;
+	EXERCISE;
+	PAUSED;
+}
+
+enum Direction
+{
+	LEFT;
+	RIGHT;
+	UP;
+	DOWN;
+	NONE;
+}

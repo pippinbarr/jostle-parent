@@ -1,2 +1,5 @@
 JostleParent.sublime-project
 .DS_Store
+/new-project/jostle-parent/.vscode
+/new-project/jostle-parent/export
+/original-project/export

@@ -696,9 +696,9 @@ Get the kids on the bus (don’t let them get hit by a car)
 
 Enjoy the park (don’t let the kids wander off) [Timer]
 
-<Something about drowning>
+Something about drowning
 
-<Something about shopping>
+Something about shopping
 
 Keep the kids away from the fire
 
@@ -1878,7 +1878,7 @@ Parent touch => pause (for some limited time) then follow
 
 Doorway => pause (for some longer time) then wander
 
-Wander <=> follow (over periods of time)
+Wander and follow (over periods of time)
 
 Follow => wander (when target is no longer present)
 

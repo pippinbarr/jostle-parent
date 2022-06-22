@@ -1,0 +1,15 @@
+ol.gavList ol {
+  list-style-type: upper-alpha;
+}
+.gavList ol ol {
+  list-style-type: upper-roman;
+}
+.gavList ol ol ol {
+  list-style-type: lower-alpha;
+}
+.gavList ol ol ol ol {
+  list-style-type: lower-roman;
+}
+.gavList ol ol ol ol ol {
+  list-style-type: lower-greek;
+}

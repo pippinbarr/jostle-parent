@@ -18,7 +18,7 @@ In June of 2022 I was finally able to convince HaxeFlixel to rebuild the game as
 
 ## Documentation
 * Check out the [code repository](https://github.com/pippinbarr/jostle-parent) (includes the original HaxeFlixel project and a new one I've been using to update the exports to HTML5, Mac, and Windows)
-* Read the [design journal](../process/journal.md) to get some insight into what I was thinking about while making the game
+* Read the [process documentation](../process/) to get some insight into what I was thinking about while making the game
 * Download the [the original .swf file](https://github.com/pippinbarr/jostle-parent/releases/tag/swf/) if you want
 
 ## License

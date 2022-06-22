@@ -11,7 +11,3 @@ I should report that I am writing this series with Teddy Diefenbach called &#82
 Anyway this means that I&#8217;m writing about Jostle Parent all over the place (it feels like). I&#8217;m writing about it to Teddy, and then that&#8217;s turning up on Unwinnable, and then I&#8217;m writing about it &#8220;in secret&#8221; on a secret blog for Kickstarter backers (who can also play incremental builds as I develop it), and then I&#8217;m writing about it in my diary and so on. So it&#8217;s endless and it leaves me not super inclined to write about it here? So if you&#8217;re interested go read about it somewhere else, is what I&#8217;m saying? The Angst Affairs is probably the right place, I think. Geez, what an awesome blogpost.
 
 Don&#8217;t thank me, I&#8217;ll thank you.
-
-## The Angst Affairs
-
-You can [read the *Angst Affairs* series on Unwinnable](https://unwinnable.com/?s=angst+affairs). In the interest of posterity I've downloaded the series and put it in the process folder too:

@@ -133,7 +133,7 @@ class Bedroom extends Place
 		shower.dispatcher.addEventListener("HARD", handleShowerJostle);
 
 		showerSound = new FlxSound();
-		showerSound.loadEmbedded(AssetPaths.shower__mp3, true, false);
+		showerSound.loadEmbedded(AssetPaths.shower__wav, true, false);
 
 		bedTrigger = new FlxSprite(bed.hit.x + bed.hit.width / 2 - 1 * 8, bed.hit.y - 1 * 8);
 		bedTrigger.makeGraphic(2 * 8, Std.int(bed.hit.height + 2 * 8), 0xFFFF0000);

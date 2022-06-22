@@ -2,6 +2,31 @@
 <project xmlns="http://lime.software/project/1.0.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://lime.software/project/1.0.2 http://lime.software/xsd/project-1.0.2.xsd">
 
+	<!--
+  haxelib list
+
+  actuate: [1.8.9]
+  box2d: [1.2.3]
+  flixel-addons: 2.10.0 [2.11.0]
+  flixel-demos: 2.7.4 [2.8.1]
+  flixel-templates: [2.6.6]
+  flixel-tools: [1.5.1]
+  flixel-ui: 2.3.3 [2.4.0]
+  flixel: 2.0.0-alpha.3 3.0.1 3.3.6 3.3.12 4.9.0 [4.11.0]
+  haxelib: [3.3.0]
+  hscript: 2.0.5 [2.4.0]
+  hxcpp: 3.2.94 [4.2.1]
+  layout: [1.2.1]
+  lime-samples: [7.0.0]
+  lime-tools: [1.5.7]
+  lime: 0.9.0 1.0.0 2.1.3 2.9.0 [7.9.0]
+  nme: 3.5.6 [6.1.38]
+  openfl-html5: 1.0.5 [1.4.2-beta]
+  openfl-samples: [8.7.0]
+  openfl-tools: [1.0.10]
+  openfl: 1.0.0-rc.2 2.0.0 2.2.8 3.0.0 3.5.0 3.6.0 [9.1.0]
+  systools: [1.1.0] -->
+
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="Jostle Parent" file="jostle-parent" main="Main" version="0.0.1" company="HaxeFlixel" />
@@ -58,7 +83,7 @@
 	<!--<haxedef name="FLX_RECORD" />-->
 
 	<!--Disable the right and middle mouse buttons-->
-	<!--<haxedef name="FLX_NO_MOUSE_ADVANCED" />-->
+	<haxedef name="FLX_NO_MOUSE_ADVANCED" />
 
 	<!--Disable the native cursor API on Flash-->
 	<haxedef name="FLX_NO_NATIVE_CURSOR" />
@@ -67,10 +92,10 @@
 	<haxedef name="FLX_NO_MOUSE" if="mobile" />
 	<haxedef name="FLX_NO_KEYBOARD" if="mobile" />
 	<haxedef name="FLX_NO_TOUCH" if="desktop" />
-	<!--<haxedef name="FLX_NO_GAMEPAD" />-->
+	<haxedef name="FLX_NO_GAMEPAD" />
 
 	<!--Disable the Flixel core sound tray-->
-	<!--<haxedef name="FLX_NO_SOUND_TRAY" />-->
+	<haxedef name="FLX_NO_SOUND_TRAY" />
 
 	<!--Disable the Flixel sound management code-->
 	<!--<haxedef name="FLX_NO_SOUND_SYSTEM" />-->

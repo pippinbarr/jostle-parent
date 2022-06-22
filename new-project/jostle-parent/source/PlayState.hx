@@ -176,7 +176,7 @@ class PlayState extends FlxState
 		add(music);
 
 		alarm = new FlxSound();
-		alarm.loadEmbedded(AssetPaths.alarm__mp3, true, false);
+		alarm.loadEmbedded(AssetPaths.alarm__wav, true, false);
 
 		// Create display groups
 		bg = new FlxGroup();

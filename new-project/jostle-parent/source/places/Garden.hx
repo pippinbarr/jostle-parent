@@ -133,7 +133,7 @@ class Garden extends Place
 		lawnmower.place = this;
 
 		mowerSound = new FlxSound();
-		mowerSound.loadEmbedded(AssetPaths.mower__mp3, true, false);
+		mowerSound.loadEmbedded(AssetPaths.mower__wav, true, false);
 		mowerSound.volume = 0.3;
 
 		bg.add(bgTile);

@@ -130,11 +130,11 @@ class Music extends FlxBasic
 		super();
 
 		jostle = new FlxSound();
-		jostle.loadEmbedded(AssetPaths.jostle__mp3, false, false);
+		jostle.loadEmbedded(AssetPaths.jostle__wav, false, false);
 		jostle.volume = 0.5;
 
 		softJostle = new FlxSound();
-		softJostle.loadEmbedded(AssetPaths.jostle__mp3, false, false);
+		softJostle.loadEmbedded(AssetPaths.jostle__wav, false, false);
 		softJostle.volume = 0.2;
 
 		createInstruments();
@@ -291,41 +291,41 @@ class Music extends FlxBasic
 	private function createInstruments():Void
 	{
 		kicks = new Array();
-		kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone0__mp3, false, false));
-		kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone1__mp3, false, false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone2__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone3__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone4__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone5__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone6__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone7__mp3,false,false));
-		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone8__mp3,false,false));
+		kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone0__wav, false, false));
+		kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone1__wav, false, false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone2__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone3__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone4__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone5__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone6__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone7__wav,false,false));
+		// kicks.push(new FlxSound().loadEmbedded(AssetPaths.tone8__wav,false,false));
 
 		snares = new Array();
-		snares.push(new FlxSound().loadEmbedded(AssetPaths.snare1__mp3, false, false));
-		// snares.push(new FlxSound().loadEmbedded(AssetPaths.snare2__mp3,false,false));
-		snares.push(new FlxSound().loadEmbedded(AssetPaths.snare3__mp3, false, false));
+		snares.push(new FlxSound().loadEmbedded(AssetPaths.snare1__wav, false, false));
+		// snares.push(new FlxSound().loadEmbedded(AssetPaths.snare2__wav,false,false));
+		snares.push(new FlxSound().loadEmbedded(AssetPaths.snare3__wav, false, false));
 
 		hihats = new Array();
-		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone0__mp3,false,false));
-		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone1__mp3,false,false));
-		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone2__mp3,false,false));
-		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone3__mp3,false,false));
-		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone4__mp3, false, false));
-		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone5__mp3, false, false));
-		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone6__mp3, false, false));
-		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone7__mp3, false, false));
-		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone8__mp3, false, false));
+		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone0__wav,false,false));
+		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone1__wav,false,false));
+		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone2__wav,false,false));
+		// hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone3__wav,false,false));
+		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone4__wav, false, false));
+		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone5__wav, false, false));
+		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone6__wav, false, false));
+		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone7__wav, false, false));
+		hihats.push(new FlxSound().loadEmbedded(AssetPaths.tone8__wav, false, false));
 
 		splashes = new Array();
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone0__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone1__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone2__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone3__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone4__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone5__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone6__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone7__mp3, false, false));
-		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone8__mp3, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone0__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone1__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone2__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone3__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone4__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone5__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone6__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone7__wav, false, false));
+		splashes.push(new FlxSound().loadEmbedded(AssetPaths.tone8__wav, false, false));
 	}
 }

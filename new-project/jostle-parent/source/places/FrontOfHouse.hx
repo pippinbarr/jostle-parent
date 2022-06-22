@@ -64,16 +64,16 @@ class FrontOfHouse extends Place
 		// Sounds
 
 		car1Sound = new FlxSound();
-		car1Sound.loadEmbedded(AssetPaths.car__mp3, false, false);
+		car1Sound.loadEmbedded(AssetPaths.car__wav, false, false);
 		car1Sound.volume = 0.5;
 		// car1Sound.play();
 
 		car2Sound = new FlxSound();
-		car2Sound.loadEmbedded(AssetPaths.car__mp3, false, false);
+		car2Sound.loadEmbedded(AssetPaths.car__wav, false, false);
 		car2Sound.volume = 0.5;
 
 		busSound = new FlxSound();
-		busSound.loadEmbedded(AssetPaths.bus__mp3, false, false);
+		busSound.loadEmbedded(AssetPaths.bus__wav, false, false);
 
 		var bgTile:FlxSprite = new FlxSprite(ORIGIN_X, ORIGIN_Y, AssetPaths.front_of_house_bg_tile__png);
 		bgTile.origin.x = bgTile.origin.y = 0;

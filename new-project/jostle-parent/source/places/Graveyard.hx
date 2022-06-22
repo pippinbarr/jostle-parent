@@ -90,7 +90,7 @@ class Graveyard extends Place
 		fg.add(rain);
 
 		rainSound = new FlxSound();
-		rainSound.loadEmbedded(AssetPaths.shower__mp3, true, false);
+		rainSound.loadEmbedded(AssetPaths.shower__wav, true, false);
 
 		bg.add(bgSprite);
 		bg.add(childGrave1);

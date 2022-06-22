@@ -158,7 +158,7 @@ class PlayState extends FlxState
 
 	override public function create():Void
 	{
-		FlxG.stage.displayState = FULL_SCREEN_INTERACTIVE;
+		// FlxG.stage.displayState = FULL_SCREEN_INTERACTIVE;
 
 		FlxG.save.bind("JostleParentSave");
 		// FlxG.save.erase();

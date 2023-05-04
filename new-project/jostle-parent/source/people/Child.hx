@@ -436,14 +436,14 @@ class Child extends Person
 		switch (state)
 		{
 			case PAUSED:
-				if (statusText.text.text != "PAUSED")
-					statusText.setText("PAUSED");
+				if (statusText.text.text != Global.strings.Child.paused)
+					statusText.setText(Global.strings.Child.paused);
 				statusText.visible = false;
 
 			case NORMAL:
-				if (hungry && (statusText.text.text != "HUNGRY" || !statusText.visible))
+				if (hungry && (statusText.text.text != Global.strings.Child.hungry || !statusText.visible))
 				{
-					statusText.setText("HUNGRY");
+					statusText.setText(Global.strings.Child.hungry);
 				}
 				else if (!hungry && statusText.visible && statusText.text.text != name)
 				{
@@ -451,24 +451,24 @@ class Child extends Person
 				}
 
 			case ELECTROCUTING:
-				if (statusText.text.text != "ELECTROCUTING" || !statusText.visible)
-					statusText.setText("ELECTROCUTING");
+				if (statusText.text.text != Global.strings.Child.electrocuting || !statusText.visible)
+					statusText.setText(Global.strings.Child.electrocuting);
 
 			case CHOKING:
-				if (statusText.text.text != "CHOKING" || !statusText.visible)
-					statusText.setText("CHOKING");
+				if (statusText.text.text != Global.strings.Child.choking || !statusText.visible)
+					statusText.setText(Global.strings.Child.choking);
 
 			case POISONING:
-				if (statusText.text.text != "POISONED" || !statusText.visible)
-					statusText.setText("POISONED");
+				if (statusText.text.text != Global.strings.Child.poisoned || !statusText.visible)
+					statusText.setText(Global.strings.Child.poisoned);
 
 			case DROWNING:
-				if (statusText.text.text != "DROWNING" || !statusText.visible)
-					statusText.setText("DROWNING");
+				if (statusText.text.text != Global.strings.Child.drowning || !statusText.visible)
+					statusText.setText(Global.strings.Child.drowning);
 
 			case DEAD:
-				if (statusText.text.text != "DEAD" || !statusText.visible)
-					statusText.setText("DEAD");
+				if (statusText.text.text != Global.strings.Child.dead || !statusText.visible)
+					statusText.setText(Global.strings.Child.dead);
 				statusText.visible = false;
 		}
 
@@ -548,7 +548,7 @@ class Child extends Person
 				if (Math.abs(OtherSprite.body.getLinearVelocity().x) > 1)
 				{
 					// trace("Car linear v is " + OtherSprite.body.getLinearVelocity().x);
-					die("was hit by a car");
+					die(Global.strings.Child.hit_by_car);
 				}
 
 			// If it's poison then may get poisoned
@@ -711,16 +711,16 @@ class Child extends Person
 		switch (state)
 		{
 			case DROWNING:
-				die("drowned");
+				die(Global.strings.Child.drowned);
 
 			case ELECTROCUTING:
-				die("was electrocuted");
+				die(Global.strings.Child.drowned);
 
 			case CHOKING:
-				die("choked");
+				die(Global.strings.Child.choked);
 
 			case POISONING:
-				die("was poisoned");
+				die(Global.strings.Child.was_poisoned);
 
 			case PAUSED, NORMAL, DEAD:
 		}
@@ -1139,7 +1139,7 @@ class Child extends Person
 	override public function hide(Log:Bool = true):Void
 	{
 		super.hide(Log);
-		statusText.setText("HIDDEN");
+		statusText.setText(Global.strings.Child.hidden);
 		statusText.visible = false;
 		// state = PAUSED;
 	}

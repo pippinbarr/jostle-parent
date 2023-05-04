@@ -120,7 +120,7 @@ class Parent extends Person
 	private function drowningTimerFinished(t:FlxTimer):Void
 	{
 		// drowning = false;
-		die("drowned");
+		die(Global.strings.Parent.drowned);
 	}
 
 	public function isDrowning():Bool
@@ -277,10 +277,10 @@ class Parent extends Person
 					{
 						hugTimer.cancel();
 						hugger.unhide();
-						hugger.die("was hit by a car");
+						hugger.die(Global.strings.Parent.hugger_hit_by_car);
 						hugger = null;
 					}
-					die("were hit by a car");
+					die(Global.strings.Parent.hit_by_car);
 				}
 
 			case PARENT, FURNITURE, WALL, LOCK, UNKNOWN, FOOD, TOY, ELECTRICITY, POISON, BED:

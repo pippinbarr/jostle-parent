@@ -22,6 +22,7 @@ import haxe.Unserializer;
 enum PlayStateState
 {
 	MENU;
+
 	MENU_TO_BLACK;
 	ALARM;
 	BLACK_TO_PLAY;
@@ -286,7 +287,7 @@ class PlayState extends FlxState
 		dangerText2 = new FlxTextWithBG(FlxG.width, 2 * 8, 240, "", 12, "left", 0xff000000, 0xffff0000, true, LEFT);
 		ui.add(dangerText2);
 
-		deathNoticeText = new FlxTextWithBG(0, 80, FlxG.width, "DEATH", 24, "center", 0xFFFFFFFF, 0xFF000000, true, LEFT, 1, 24);
+		deathNoticeText = new FlxTextWithBG(0, 80, FlxG.width, Global.strings.PlayState.death, 24, "center", 0xFFFFFFFF, 0xFF000000, true, LEFT, 1, 24);
 		// deathNoticeText.setFormat(null,24,0xFFFFFFFF,"center");
 		// deathNoticeText.scrollFactor.x = 0; deathNoticeText.scrollFactor.y = 0;
 		deathNoticeText.visible = false;
@@ -351,7 +352,7 @@ class PlayState extends FlxState
 			}
 
 			if (FlxG.save.data.camera_focus_x == null)
-				taskText.tweenIn("Move off-screen with the ARROW KEYS to begin playing.");
+				taskText.tweenIn(Global.strings.PlayState.start_instructions);
 
 			FlxG.camera.fade(0xFF000000, FADE_TIME, true, blackFadedToMenu);
 			music.fadeIn(FADE_TIME);
@@ -791,6 +792,15 @@ class PlayState extends FlxState
 
 		display.sort(sortBySortKey);
 
+		// Reset the whole shebang
+		// RESET THE ENTIRE GAME
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.save.erase();
+			FlxG.save.flush();
+			FlxG.switchState(new PlayState());
+		}
+
 		switch (state)
 		{
 			case BLACK_TO_MENU:
@@ -808,6 +818,12 @@ class PlayState extends FlxState
 				}
 
 			case MENU:
+				if (FlxG.keys.justPressed.F)
+				{
+					FlxG.scaleMode = new flixel.system.scaleModes.FillScaleMode();
+					FlxG.fullscreen = true;
+				}
+
 				if (taskText.isTweenedOut())
 				{
 					// taskText.tweenIn("Walk off the screen to begin playing.");
@@ -910,23 +926,31 @@ class PlayState extends FlxState
 					if (!child3.alive)
 						deadChildren.push(child3);
 
-					if (numDeadChildren() == 0)
+					var regex1 = ~/%(NAME1)%/g;
+					var regex2 = ~/%(NAME2)%/g;
+					var regex3 = ~/%(NAME3)%/g;
+					var mournString = "THIS SHOULD NOT BE POSSIBLE";
+
+					if (numDeadChildren() == 1)
 					{
-						taskText.tweenIn("THIS SHOULD NOT BE POSSIBLE.");
-					}
-					else if (numDeadChildren() == 1)
-					{
-						taskText.tweenIn("Mourn " + deadChildren[0].name + " and leave when you are ready.");
+						mournString = Global.strings.PlayState.mourn1;
+						mournString = regex1.replace(mournString, deadChildren[0].name);
 					}
 					else if (numDeadChildren() == 2)
 					{
-						taskText.tweenIn("Mourn " + deadChildren[0].name + " and " + deadChildren[1].name + " and leave when you are ready.");
+						mournString = Global.strings.PlayState.mourn2;
+						mournString = regex1.replace(mournString, deadChildren[0].name);
+						mournString = regex2.replace(mournString, deadChildren[1].name);
 					}
 					else if (numDeadChildren() == 3)
 					{
-						taskText.tweenIn("Mourn "
-							+ deadChildren[0].name + ", " + deadChildren[1].name + ", and " + deadChildren[2].name + " and leave when you are ready.");
+						mournString = Global.strings.PlayState.mourn3;
+						mournString = regex1.replace(mournString, deadChildren[0].name);
+						mournString = regex2.replace(mournString, deadChildren[1].name);
+						mournString = regex3.replace(mournString, deadChildren[2].name);
 					}
+
+					taskText.tweenIn(mournString);
 				}
 				graveyard.update();
 
@@ -1024,7 +1048,7 @@ class PlayState extends FlxState
 			case GET_UP:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Get up and move around with the ARROW KEYS.");
+					taskText.tweenIn(Global.strings.PlayState.get_up_instructions);
 				}
 
 				// if (!taskText.isTweenedIn()) return;
@@ -1049,7 +1073,7 @@ class PlayState extends FlxState
 			case TURN_ON_SHOWER:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Turn on the shower.");
+					taskText.tweenIn(Global.strings.PlayState.turn_on_shower_instructions);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1064,7 +1088,7 @@ class PlayState extends FlxState
 			case SHOWER:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Take a shower.");
+					taskText.tweenIn(Global.strings.PlayState.shower_instructions);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1087,7 +1111,7 @@ class PlayState extends FlxState
 			case GO_TO_KIDS_ROOM:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Go to the kids' room.");
+					taskText.tweenIn(Global.strings.PlayState.go_to_kids_instructions);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1105,7 +1129,7 @@ class PlayState extends FlxState
 			case WAKE_KIDS:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Wake up the kids.");
+					taskText.tweenIn(Global.strings.PlayState.wake_up_kids_instructions);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1120,7 +1144,7 @@ class PlayState extends FlxState
 			case TAKE_KIDS_TO_LIVING_ROOM:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Take the kids to the living room.");
+					taskText.tweenIn(Global.strings.PlayState.go_to_living_room_instructions);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1139,9 +1163,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get breakfast from the refrigerator for the kids.");
+						taskText.tweenIn(Global.strings.PlayState.get_breakfast_for_kids);
 					else
-						taskText.tweenIn("Get breakfast from the refrigerator.");
+						taskText.tweenIn(Global.strings.PlayState.get_breakfast_alone);
 
 					child1.setHungry(true);
 					child2.setHungry(true);
@@ -1163,7 +1187,7 @@ class PlayState extends FlxState
 			case FEED_KIDS_BREAKFAST:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Feed the kids.");
+					taskText.tweenIn(Global.strings.PlayState.feed_the_kids);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1179,9 +1203,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Take the kids out into the garden.");
+						taskText.tweenIn(Global.strings.PlayState.take_kids_to_garden);
 					else
-						taskText.tweenIn("Go to the garden.");
+						taskText.tweenIn(Global.strings.PlayState.go_to_garden);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1200,7 +1224,7 @@ class PlayState extends FlxState
 			case MOW_THE_LAWN:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Mow the lawn.");
+					taskText.tweenIn(Global.strings.PlayState.start_mow_lawn);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1217,9 +1241,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Mow the lawn until you're satisfied, then take the kids back inside.");
+						taskText.tweenIn(Global.strings.PlayState.mow_lawn);
 					else
-						taskText.tweenIn("Mow the lawn until you're satisfied, then go back inside.");
+						taskText.tweenIn(Global.strings.PlayState.mow_lawn_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1238,9 +1262,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Take the kids out to the front of the house.");
+						taskText.tweenIn(Global.strings.PlayState.go_to_front);
 					else
-						taskText.tweenIn("Go out to the front of the house.");
+						taskText.tweenIn(Global.strings.PlayState.go_to_front_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1259,9 +1283,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Put the kids on the bus and get on.");
+						taskText.tweenIn(Global.strings.PlayState.get_on_bus);
 					else
-						taskText.tweenIn("Get on the bus.");
+						taskText.tweenIn(Global.strings.PlayState.get_on_bus_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1288,7 +1312,7 @@ class PlayState extends FlxState
 					}
 					else
 					{
-						taskText.tweenIn("Remember.");
+						taskText.tweenIn(Global.strings.PlayState.remember);
 					}
 				}
 
@@ -1319,9 +1343,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get the kids out of the playground.");
+						taskText.tweenIn(Global.strings.PlayState.leave_playground);
 					else
-						taskText.tweenIn("Leave the playground.");
+						taskText.tweenIn(Global.strings.PlayState.leave_playground_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1345,7 +1369,7 @@ class PlayState extends FlxState
 				{
 					if (numLivingChildren() > 0)
 					{
-						taskText.tweenIn("Play ball with the kids.");
+						taskText.tweenIn(Global.strings.PlayState.play_ball);
 						parent.startPlayingBall();
 						child1.setMovementMode(CHASE);
 						child1.setTarget(park.getBall());
@@ -1356,7 +1380,7 @@ class PlayState extends FlxState
 					}
 					else
 					{
-						taskText.tweenIn("Remember.");
+						taskText.tweenIn(Global.strings.PlayState.remember);
 					}
 				}
 
@@ -1381,7 +1405,7 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Feed the kids lunch.");
+						taskText.tweenIn(Global.strings.PlayState.have_lunch);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1397,9 +1421,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get the kids out of the park and leave.");
+						taskText.tweenIn(Global.strings.PlayState.leave_park);
 					else
-						taskText.tweenIn("Leave the park.");
+						taskText.tweenIn(Global.strings.PlayState.leave_park_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1430,9 +1454,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Supervise the kids while they swim, but make sure you let them move around.");
+						taskText.tweenIn(Global.strings.PlayState.supervise_swimming);
 					else
-						taskText.tweenIn("Remember.");
+						taskText.tweenIn(Global.strings.PlayState.remember);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1448,9 +1472,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get the kids off the beach and leave.");
+						taskText.tweenIn(Global.strings.PlayState.leave_beach);
 					else
-						taskText.tweenIn("Leave the beach.");
+						taskText.tweenIn(Global.strings.PlayState.leave_beach_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1476,9 +1500,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get the kids into the house.");
+						taskText.tweenIn(Global.strings.PlayState.go_inside);
 					else
-						taskText.tweenIn("Go inside.");
+						taskText.tweenIn(Global.strings.PlayState.go_inside_alone);
 					// frontOfHouse.resetBusNoPassengers();
 				}
 
@@ -1509,9 +1533,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Get dinner from the refrigerator for the kids.");
+						taskText.tweenIn(Global.strings.PlayState.get_dinner);
 					else
-						taskText.tweenIn("Get dinner from the refrigerator.");
+						taskText.tweenIn(Global.strings.PlayState.get_dinner_alone);
 
 					child1.setHungry(true);
 					child2.setHungry(true);
@@ -1533,7 +1557,7 @@ class PlayState extends FlxState
 			case FEED_KIDS_DINNER:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Feed the kids.");
+					taskText.tweenIn(Global.strings.PlayState.feed_the_kids);
 
 					child1.setHungry(true);
 					child2.setHungry(true);
@@ -1554,9 +1578,9 @@ class PlayState extends FlxState
 				if (taskText.isTweenedOut())
 				{
 					if (numLivingChildren() > 0)
-						taskText.tweenIn("Take the kids to their bedroom.");
+						taskText.tweenIn(Global.strings.PlayState.go_to_bedroom);
 					else
-						taskText.tweenIn("Go to the kids' room.");
+						taskText.tweenIn(Global.strings.PlayState.go_to_bedroom_alone);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1578,7 +1602,7 @@ class PlayState extends FlxState
 			case PUT_KIDS_TO_BED:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Put the kids to bed.");
+					taskText.tweenIn(Global.strings.PlayState.put_kids_to_bed);
 
 					child1.setTired(true);
 					child2.setTired(true);
@@ -1598,7 +1622,7 @@ class PlayState extends FlxState
 			case GO_TO_BED:
 				if (taskText.isTweenedOut())
 				{
-					taskText.tweenIn("Go to bed when you're ready.");
+					taskText.tweenIn(Global.strings.PlayState.go_to_bed);
 				}
 
 				if (!taskText.isTweenedIn())
@@ -1651,11 +1675,11 @@ class PlayState extends FlxState
 					dangerText2.tweenOut(true);
 
 				case LIVING_ROOM:
-					dangerText.tweenIn("Keep the kids away from the faulty electrical outlet.");
+					dangerText.tweenIn(Global.strings.PlayState.electricity_danger);
 					if (livingRoom.foodAvailable())
 					{
 						dangerText2.y = dangerText.y + dangerText.height + 8;
-						dangerText2.tweenIn("Be careful of choking when feeding the kids.");
+						dangerText2.tweenIn(Global.strings.PlayState.choking_danger);
 					}
 					else
 					{
@@ -1663,26 +1687,26 @@ class PlayState extends FlxState
 					}
 
 				case GARDEN:
-					dangerText.tweenIn("Keep the kids away from the box of poison.");
+					dangerText.tweenIn(Global.strings.PlayState.poison_danger);
 					dangerText2.tweenOut(true);
 
 				case FRONT_OF_HOUSE:
-					dangerText.tweenIn("Keep the kids away from the traffic.");
+					dangerText.tweenIn(Global.strings.PlayState.traffic_danger);
 					dangerText2.y = dangerText.y + dangerText.height + 8;
-					dangerText2.tweenIn("Don't let the kids leave your sight.");
+					dangerText2.tweenIn(Global.strings.PlayState.keep_in_sight);
 
 				case PLAYGROUND:
-					dangerText.tweenIn("Make sure you're there when the kids climb the slide's ladder.");
+					dangerText.tweenIn(Global.strings.PlayState.slide_danger);
 					if (task == AT_PLAYGROUND)
 					{
 						dangerText2.y = dangerText.y + dangerText.height + 8;
-						dangerText2.tweenIn("Don't let the kids leave the playground area.");
+						dangerText2.tweenIn(Global.strings.PlayState.playground_area_danger);
 					}
 
 				case PARK:
 					if (task == AT_PARK || task == FEED_KIDS_LUNCH)
 					{
-						dangerText.tweenIn("Don't let the kids leave the park area.");
+						dangerText.tweenIn(Global.strings.PlayState.park_area_danger);
 					}
 					else
 					{
@@ -1692,7 +1716,7 @@ class PlayState extends FlxState
 					if (park.foodAvailable())
 					{
 						dangerText2.y = dangerText.y + dangerText.height + 8;
-						dangerText2.tweenIn("Be careful of choking when feeding the kids.");
+						dangerText2.tweenIn(Global.strings.PlayState.choking_danger);
 					}
 					else
 					{
@@ -1700,12 +1724,12 @@ class PlayState extends FlxState
 					}
 
 				case BEACH:
-					dangerText.tweenIn("Don't let the kids go in too deep.");
+					dangerText.tweenIn(Global.strings.PlayState.swimming_danger);
 
 					if (task == AT_BEACH)
 					{
 						dangerText2.y = dangerText.y + dangerText.height + 8;
-						dangerText2.tweenIn("Don't let the kids leave the beach area.");
+						dangerText2.tweenIn(Global.strings.PlayState.beach_area_danger);
 					}
 
 				case MENU:
@@ -1803,15 +1827,15 @@ class PlayState extends FlxState
 			{
 				if (child1.alive && (!beachLeft.contains(child1) && !beachMiddle.contains(child1) && !beachRight.contains(child1)))
 				{
-					child1.die("got lost");
+					child1.die(Global.strings.PlayState.got_lost);
 				}
 				if (child2.alive && (!beachLeft.contains(child2) && !beachMiddle.contains(child2) && !beachRight.contains(child2)))
 				{
-					child2.die("got lost");
+					child2.die(Global.strings.PlayState.got_lost);
 				}
 				if (child3.alive && (!beachLeft.contains(child3) && !beachMiddle.contains(child3) && !beachRight.contains(child3)))
 				{
-					child3.die("got lost");
+					child3.die(Global.strings.PlayState.got_lost);
 				}
 			}
 		}
@@ -1902,10 +1926,19 @@ class PlayState extends FlxState
 
 		for (i in 0...theDead.length)
 		{
+			var person = "Someone";
+			var cause = "died";
 			if (theDead[i].kind == PARENT)
-				text += "You " + cast(theDead[i], Parent).getCauseOfDeath() + ".\n";
+			{
+				person = Global.strings.PlayState.you;
+				cause = cast(theDead[i], Parent).getCauseOfDeath();
+			}
 			else
-				text += cast(theDead[i], Child).name + " " + cast(theDead[i], Child).getCauseOfDeath() + ".\n";
+			{
+				person = cast(theDead[i], Child).name;
+				cause = cast(theDead[i], Child).getCauseOfDeath();
+			}
+			text += person + " " + cause + ".\n";
 		}
 
 		text += "\n";
@@ -2072,7 +2105,7 @@ class PlayState extends FlxState
 		else
 		{
 			state = DEAD_PLAY;
-			taskText.tweenIn("Return to your grave when you are ready to move on.");
+			taskText.tweenIn(Global.strings.PlayState.return_to_grave);
 		}
 
 		parent.active = true;
@@ -2245,7 +2278,8 @@ class PlayState extends FlxState
 
 		// blackBG.visible = true;
 
-		var gameOverText:FlxTextWithBG = new FlxTextWithBG(48, 80, FlxG.width - 96, "\nGAME OVER", 24, "center", 0xFFFFFFFF, 0xFF000000, true, LEFT, 1, 24);
+		var gameOverText:FlxTextWithBG = new FlxTextWithBG(48, 80, FlxG.width - 96, "\n" + Global.strings.PlayState.game_over, 24, "center", 0xFFFFFFFF,
+			0xFF000000, true, LEFT, 1, 24);
 		var gameOverDetails:FlxTextWithBG = new FlxTextWithBG(48, 80, FlxG.width - 96, "", 12, "center", 0xFFFFFFFF, 0xFF000000, true, LEFT, 1, 24);
 
 		// var gameOverText:FlxText = new FlxText(0,0,FlxG.width,"",24);
@@ -2273,44 +2307,68 @@ class PlayState extends FlxState
 		else
 			livingChildren.push(child3);
 
+		var regex1 = ~/%(NAME1)%/g;
+		var regex2 = ~/%(NAME2)%/g;
+		var regex3 = ~/%(NAME3)%/g;
+		var deadString = "";
+
 		if (parent.isDead())
 		{
-			text += "You are dead";
+			deadString += Global.strings.PlayState.you_are_dead;
+
 			if (numLivingChildren() == 3)
 			{
-				text += ". You are survived by " + child1.name + ", " + child2.name + ", and " + child3.name + ".";
+				deadString += Global.strings.you_dead_3_children_survived;
+				deadString = regex1.replace(deadString, child1.name);
+				deadString = regex2.replace(deadString, child2.name);
+				deadString = regex3.replace(deadString, child3.name);
 			}
 			else if (numLivingChildren() == 2)
 			{
-				text += ", as is " + deadChildren[0].name + ". You are survived by " + livingChildren[0].name + " and " + livingChildren[1].name + ".";
+				deadString += Global.strings.you_dead_2_children_survived;
+				deadString = regex1.replace(deadString, deadChildren[0].name);
+				deadString = regex2.replace(deadString, livingChildren[0].name);
+				deadString = regex3.replace(deadString, livingChildren[1].name);
 			}
 			else if (numLivingChildren() == 1)
 			{
-				text += ", as are " + deadChildren[0].name + " and " + deadChildren[1].name + ". You are survived by " + livingChildren[0].name + ".";
+				deadString += Global.strings.you_dead_1_child_survived;
+				deadString = regex1.replace(deadString, deadChildren[0].name);
+				deadString = regex2.replace(deadString, deadChildren[1].name);
+				deadString = regex3.replace(deadString, livingChildren[0].name);
 			}
 			else
 			{
-				text += ", as are " + deadChildren[0].name + " and " + deadChildren[1].name + " and " + deadChildren[2].name + ".";
+				deadString += Global.strings.you_dead_0_children_survived;
+				deadString = regex1.replace(deadString, deadChildren[0].name);
+				deadString = regex2.replace(deadString, deadChildren[1].name);
+				deadString = regex3.replace(deadString, deadChildren[2].name);
 			}
 		}
 		else if (numLivingChildren() == 3)
 		{
-			text += "You and all your children are safe in bed.";
+			deadString = Global.strings.PlayState.you_lived_3_children_survived;
 		}
 		else if (numLivingChildren() == 2)
 		{
-			text += deadChildren[0].name + " is dead. You, " + livingChildren[0].name + ", and " + livingChildren[1].name + " are safe in bed.";
+			deadString += Global.strings.you_lived_2_children_survived;
+			deadString = regex1.replace(deadString, deadChildren[0].name);
+			deadString = regex2.replace(deadString, livingChildren[0].name);
+			deadString = regex3.replace(deadString, livingChildren[1].name);
 		}
 		else if (numLivingChildren() == 1)
 		{
-			text += deadChildren[0].name + " and " + deadChildren[1].name + " are dead. You and " + livingChildren[0].name + " are safe in bed.";
+			deadString += Global.strings.you_lived_1_child_survived;
+			deadString = regex1.replace(deadString, deadChildren[0].name);
+			deadString = regex2.replace(deadString, deadChildren[1].name);
+			deadString = regex3.replace(deadString, livingChildren[0].name);
 		}
 		else
 		{
-			text += "All of your children are dead.";
+			text += Global.strings.you_lived_0_children_survived;
 		}
 
-		text += "\n\n( Press SPACE to start a completely new game. )\n\n\n";
+		text += "\n\n( " + Global.strings.PlayState.new_game + " )\n\n\n";
 
 		gameOverDetails.setText(text);
 

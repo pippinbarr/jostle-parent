@@ -70,8 +70,14 @@ class FlxTextWithBG extends FlxGroup
 		theAlpha = Alpha;
 		indent = Indent;
 
-		// text = new FlxText(X + indent, Y, Std.int(W - indent * 2), T, S, false);
-		text = new FlxText(X + indent, Y, Std.int(W - indent * 2), T, S);
+		if (Global.cn)
+		{
+			text = new FlxText(X + indent, Y, Std.int(W - indent * 2), T, S, false);
+		}
+		else
+		{
+			text = new FlxText(X + indent, Y, Std.int(W - indent * 2), T, S);
+		}
 		text.alignment = A;
 		text.color = TextColor;
 

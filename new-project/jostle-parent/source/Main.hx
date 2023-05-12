@@ -13,8 +13,15 @@ class Main extends Sprite
 	{
 		super();
 
-		var urlRequest:URLRequest = new URLRequest(AssetPaths.en__json);
-		// var urlRequest:URLRequest = new URLRequest(AssetPaths.cn__json);
+		var urlRequest:URLRequest;
+		if (Global.cn)
+		{
+			urlRequest = new URLRequest(AssetPaths.cn__json);
+		}
+		else
+		{
+			urlRequest = new URLRequest(AssetPaths.en__json);
+		}
 		urlRequest.method = URLRequestMethod.GET;
 		var urlLoader:URLLoader = new URLLoader(urlRequest);
 		urlLoader.addEventListener(Event.COMPLETE, function(e:Event)

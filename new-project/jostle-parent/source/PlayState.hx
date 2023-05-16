@@ -800,6 +800,13 @@ class PlayState extends FlxState
 			FlxG.save.flush();
 			FlxG.switchState(new PlayState());
 		}
+		if (!FlxG.fullscreen && Global.kiosk)
+		{
+			if (FlxG.keys.justPressed.SPACE)
+			{
+				FlxG.fullscreen = true;
+			}
+		}
 
 		switch (state)
 		{

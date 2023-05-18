@@ -251,21 +251,42 @@ class Playground extends Place
 	{
 		if (latestMountedEquipment != null && currentWatchedEquipment == null)
 		{
+			var task:String = "";
+			var name1:String = "";
+			var name2:String = "";
+
 			if (latestMountedEquipment == springRider && springRiderer != null)
 			{
 				currentWatchedEquipment = springRider;
-				return "Watch " + springRiderer.name + " play on the spring rider.";
+				task = Global.strings.Playground.supervise_spring_rider;
+				name1 = springRiderer.name;
 			}
 			else if (latestMountedEquipment == swing && swinger != null)
 			{
 				currentWatchedEquipment = swing;
-				return "Watch " + swinger.name + " play on the swing.";
+				task = Global.strings.Playground.supervise_swing;
+				name1 = swinger.name;
 			}
 			else if (latestMountedEquipment == seesaw && leftSeesawer != null && rightSeesawer != null)
 			{
 				currentWatchedEquipment = seesaw;
-				return "Watch " + leftSeesawer.name + " and " + rightSeesawer.name + " play on the seesaw.";
+				task = Global.strings.Playground.supervise_seesaw;
+				name1 = leftSeesawer.name;
+				name2 = rightSeesawer.name;
 			}
+
+			if (name1 != "")
+			{
+				var regex1 = ~/%(NAME1)%/g;
+				task = regex1.replace(task, name1);
+			}
+			if (name2 != "")
+			{
+				var regex2 = ~/%(NAME2)%/g;
+				task = regex2.replace(task, name2);
+			}
+
+			return task;
 		}
 
 		// If we're here it's because no one is on equipment

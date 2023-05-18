@@ -72,17 +72,22 @@
         "electrocuting": "触电",
         "choking": "窒息",
         "poisoned": "中毒",
-        "drowing": "溺水",
+        "drowning": "溺水了",
         "dead": "死亡",
         "hit_by_car": "被车撞了",
-        "drowned": "溺水",
+        "drowned": "窒息",
         "electrocuted": "触电",
         "choked": "窒息",
         "was_poisoned": "中毒",
         "hidden": "隐藏"
     },
+    "Playground": {
+        "supervise_swing": "看%NAME1%荡秋千",
+        "supervise_spring_rider": "看 %NAME1% 玩弹簧木马",
+        "supervise_seesaw": "看 %NAME1% 和 %NAME2% 玩翘翘板."
+    },
     "Parent": {
-        "drowned": "溺水",
+        "drowned": "窒息",
         "hugger_hit_by_car": "被车撞了",
         "hit_by_car": "被车撞了"
     }

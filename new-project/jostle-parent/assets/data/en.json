@@ -66,13 +66,18 @@
         "you_lived_0_children_survived": "All of your children are dead.",
         "new_game": "Press SPACE to start a completely new game."
     },
+    "Playground": {
+        "supervise_swing": "Watch %NAME1% play on the swing.",
+        "supervise_spring_rider": "Watch %NAME1% play on the spring rider.",
+        "supervise_seesaw": "Watch %NAME1% and %NAME2% play on the seesaw."
+    },
     "Child": {
         "paused": "PAUSED",
         "hungry": "HUNGRY",
         "electrocuting": "ELECTROCUTING",
         "choking": "CHOKING",
         "poisoned": "POISONED",
-        "drowing": "DROWNING",
+        "drowning": "DROWNING",
         "dead": "DEAD",
         "hit_by_car": "was hit by a car",
         "drowned": "drowned",

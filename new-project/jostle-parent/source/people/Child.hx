@@ -714,7 +714,7 @@ class Child extends Person
 				die(Global.strings.Child.drowned);
 
 			case ELECTROCUTING:
-				die(Global.strings.Child.drowned);
+				die(Global.strings.Child.electrocuted);
 
 			case CHOKING:
 				die(Global.strings.Child.choked);

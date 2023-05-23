@@ -220,11 +220,11 @@ class Playground extends Place
 		if (PlayState.task != LEAVE_PLAYGROUND)
 		{
 			if (!contains(PlayState.child1) && PlayState.child1.alive)
-				PlayState.child1.die("got lost");
+				PlayState.child1.die(Global.strings.PlayState.got_lost);
 			if (!contains(PlayState.child2) && PlayState.child2.alive)
-				PlayState.child2.die("got lost");
+				PlayState.child2.die(Global.strings.PlayState.got_lost);
 			if (!contains(PlayState.child3) && PlayState.child3.alive)
-				PlayState.child3.die("got lost");
+				PlayState.child3.die(Global.strings.PlayState.got_lost);
 		}
 
 		if (slider != null)

@@ -226,7 +226,7 @@ class FrontOfHouse extends Place
 			if (PlayState.task == PUT_KIDS_ON_BUS)
 				checkBus(PlayState.child1, numLivingChildren);
 			if (!contains(PlayState.child1))
-				PlayState.child1.die("got lost");
+				PlayState.child1.die(Global.strings.PlayState.got_lost);
 		}
 		if (PlayState.child2.place == this)
 		{
@@ -234,7 +234,7 @@ class FrontOfHouse extends Place
 			if (PlayState.task == PUT_KIDS_ON_BUS)
 				checkBus(PlayState.child2, numLivingChildren);
 			if (!contains(PlayState.child2))
-				PlayState.child2.die("got lost");
+				PlayState.child2.die(Global.strings.PlayState.got_lost);
 		}
 		if (PlayState.child3.place == this)
 		{
@@ -242,7 +242,7 @@ class FrontOfHouse extends Place
 			if (PlayState.task == PUT_KIDS_ON_BUS)
 				checkBus(PlayState.child3, numLivingChildren);
 			if (!contains(PlayState.child3))
-				PlayState.child3.die("got lost");
+				PlayState.child3.die(Global.strings.PlayState.got_lost);
 		}
 
 		if (!moveCars)
